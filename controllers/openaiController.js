@@ -9,7 +9,7 @@ const openai = new OpenAIApi(configuration);
 const openaiController = {
 
     generateImage: async (req, res) => {
-
+        // console.log(req.body)
         const { prompt, size} = req.body
         const imageSize = size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024'
 
@@ -19,7 +19,7 @@ const openaiController = {
                 n: 1,
                 size: imageSize,   
             })
-    
+            
             let imageUrl = response.data.data[0].url
             res.status(200).json({
                 success: true,
